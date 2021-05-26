@@ -1,0 +1,30 @@
+{
+  "name": "rps-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmisustin/rps-chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmisustin/rps-chat/issues"
+  },
+  "homepage": "https://github.com/nmisustin/rps-chat#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2",
+    "socket.io": "^4.1.2"
+  }
+}
