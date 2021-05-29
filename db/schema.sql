@@ -1,3 +1,3 @@
 DROP DATABASE IF EXISTS rps_chat;
 
-CREATE DATABASE rps_chat;
+CREATE DATABASE rps_chat; 
