@@ -1,25 +1,39 @@
-<div class="join-container">
-			<main class="join-main">
-				<form action="chat.html">
-					<div class="form-control">
-						<label for="username">Username</label>
-						<input
-							type="text"
-							name="username"
-							id="username"
-							placeholder="Enter username..."
-							required
-						/>
-					</div>
-					<div class="form-control">
-						<label for="room">Room</label>
-						<select name="room" id="room">
-							<option value="Rock">Rock</option>
-							<option value="Paper">Paper</option>
-							<option value="Scissors">Scissors</option>
-						</select>
-					</div>
-					<button type="submit" class="btn">Join Chat</button>
-				</form>
-			</main>
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+			<!--sign up-->
 		</div>
+		<div class="col-4">
+		<div class="card">
+			<div class= "card-body">
+
+		
+			<!--login-->
+
+					<form>
+						<label for="login" class="form-label">Already Have an Account?</label>
+						<div class="mb-3">
+							<input type="username" class="form-control" id="username" placeholder="Username" aria-describedby="usernameHelp">
+						</div>
+						<div class="mb-3">
+							<input type="password" class="form-control" id="password" placeholder="Password">
+						</div>
+						<label for="specify-room" class="form-label">Pick Your Room:</label>
+						<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+						<button type="radio" class="btn btn-primary">Rock</button>
+						<button type="radio" class="btn btn-danger">Paper</button>
+						<button type="radio" class="btn btn-dark">Scissors</button>
+						</div>
+						<button type="submit" class="btn btn-primary">Sign In</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
