@@ -1,9 +1,25 @@
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">RPS-Chat </a>
-    </div>
-
-    <form class="container-fluid justify-content-end">
-        <button class="btn btn-outline-success me-2" type="button" action="/login">Main button</button>
-    </form>
-</nav>
+<div class="join-container">
+			<main class="join-main">
+				<form action="chat.html">
+					<div class="form-control">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="room">Room</label>
+						<select name="room" id="room">
+							<option value="Rock">Rock</option>
+							<option value="Paper">Paper</option>
+							<option value="Scissors">Scissors</option>
+						</select>
+					</div>
+					<button type="submit" class="btn">Join Chat</button>
+				</form>
+			</main>
+		</div>

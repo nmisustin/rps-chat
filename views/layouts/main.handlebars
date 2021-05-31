@@ -5,14 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>RPS-Chat</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="../../public/stylesheet/style.css">
     </head>
     <body>
         <div class="wrapper">
             <header>
-                <h1>
-                    <a href="/">rps-chat</a>
-                </h1>
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid justify-content-start">
+                        <a class="navbar-brand" href="/">RPS-Chat </a>
+                    </div>
+
+                    <form class="container-fluid justify-content-end">
+                        <button class="btn btn-outline-success me-2" type="button" action="/login">Main button</button>
+                    </form>
+                </nav>
             </header>
             <main>
                 {{{body}}}
