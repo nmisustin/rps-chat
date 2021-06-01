@@ -20,6 +20,12 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(routes);
 
+io.on('connection', socket => {
+    console.log('new connection')
+
+    socket.emit('message', 'You are now connected')
+})
+
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
+    server.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
