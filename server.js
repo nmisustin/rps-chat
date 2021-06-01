@@ -22,6 +22,8 @@ app.use(routes);
 
 io.on('connection', socket => {
     console.log('new connection')
+
+    socket.emit('message', 'You are now connected')
 })
 
 sequelize.sync({ force: false }).then(() => {
