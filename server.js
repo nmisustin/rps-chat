@@ -4,11 +4,13 @@ const sequelize = require('./config/connection');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
-const http = require('http').createServer();
-const io = require('socket.io')(http);
+const http = require('http')
+const socketio = require('socket.io')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const server = http.createServer(app);
+const io = socketio(server)
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
