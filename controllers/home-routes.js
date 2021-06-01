@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User } = require('../models/User');
+const User = require('../models/User');
 
 router.get('/', (req, res) => {
     res.render('homepage', {});
+});
+
+router.get('/chat', (req, res) => {
+    res.render('chat', {});
 });
 
 
