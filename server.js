@@ -24,6 +24,12 @@ io.on('connection', socket => {
     console.log('new connection')
 
     socket.emit('message', 'You are now connected')
+    socket.emit('recievedMessage', 'testing')
+
+    socket.on('userMessage', msg => {
+        console.log(msg);
+        socket.broadcast.emit('recievedMessage', msg);
+    })
 })
 
 sequelize.sync({ force: false }).then(() => {
