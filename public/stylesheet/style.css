@@ -1,11 +1,22 @@
+/* html {
+    min-height: 100%;
+}; */
+
 body {
+    /* height: 100%;
+    margin: 0; */
     background: #967AA1;
     background: -moz-linear-gradient(45deg, #967AA1 0%, #49B6FF 100%);
     background: -webkit-linear-gradient(45deg, #967AA1 0%, #49B6FF 100%);
     background: linear-gradient(45deg, #967AA1 0%, #49B6FF 100%);
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
 };
+
+.nav-text {
+    font-family: 'Press Start 2P', cursive;
+}
 
 .card-bordered {
     border: 1px solid #ebebeb
@@ -22,7 +33,7 @@ body {
 }
 
 .padding {
-    padding: 3rem !important
+    padding: 4rem !important
 }
 
 body {
@@ -108,25 +119,9 @@ h4.card-title {
 .media {
     padding: 16px 12px;
     -webkit-transition: background-color .2s linear;
-    transition: background-color .2s linear
-}
-
-.media .avatar {
-    flex-shrink: 0
-}
-
-.avatar {
-    position: relative;
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    text-align: center;
-    border-radius: 100%;
-    background-color: #f5f6f7;
-    color: #8b95a5;
-    text-transform: uppercase
-}
+    transition: background-color .2s linear;
+    flex-shrink: 0;
+};
 
 .media-chat .media-body {
     -webkit-box-flex: initial;
@@ -310,4 +305,5 @@ textarea {
 }
 
 .text-info {
-    color: #48b0f7 !important
+    color: #48b0f7 !important;
+}
