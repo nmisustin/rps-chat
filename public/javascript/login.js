@@ -1,5 +1,5 @@
-async function signupFormHandler(event) {
-    event.preventDefault();
+async function signupFormHandler(room) {
+    const roomName = room;
 
     const email = document.querySelector('#email').value.trim();
     const username = document.querySelector('#username').value.trim();
@@ -17,15 +17,15 @@ async function signupFormHandler(event) {
         });
         if (response.ok) {
             console.log('success');
-            document.location.replace('/chat')
+            document.location.replace('/chat/'+roomName)
         } else {
             alert(response.statusText);
         }
     }
 }
 
-async function loginFormHandler(event) {
-    event.preventDefault();
+async function loginFormHandler(room) {
+    const roomName = room
   
     const username = document.querySelector('#login-username').value.trim();
     const password = document.querySelector('#login-password').value.trim();
@@ -43,13 +43,29 @@ async function loginFormHandler(event) {
   
       if (response.ok) {
         console.log('success')
-        document.location.replace('/chat');
+        document.location.replace('/chat/'+roomName);
       } else {
         alert(response.statusText);
       }
     }
   }
   
-document.querySelector('#signInBtn').addEventListener('click', {loginFormHandler, loginRoomValue});
+document.querySelector('#login-rock').addEventListener('click', () => {
+  loginFormHandler('rock');
+});
+document.querySelector('#login-paper').addEventListener('click', () => {
+  loginFormHandler('paper');
+});
+document.querySelector('#login-scissors').addEventListener('click', () => {
+  loginFormHandler('scissors');
+});
 
-document.querySelector('.signup-form').addEventListener('submit', {signupFormHandler, loginRoomValue});
+document.querySelector('#signup-rock').addEventListener('click', () => {
+  signupFormHandler('rock');
+});
+document.querySelector('#signup-paper').addEventListener('click', () => {
+  signupFormHandler('paper');
+});
+document.querySelector('#signup-scissors').addEventListener('click', () => {
+  signupFormHandler('scissors');
+});

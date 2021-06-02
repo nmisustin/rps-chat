@@ -10,15 +10,15 @@ router.get('/chat', (req, res) => {
     res.render('chat', {});
 });
 
-router.get('/rockchat', (req, res) => {
+router.get('/chat/rock', (req, res) => {
     res.render('rockchat', {});
 });
 
-router.get('/paperchat', (req, res) => {
+router.get('/chat/paper', (req, res) => {
     res.render('paperchat', {});
 });
 
-router.get('/scissorschat', (req, res) => {
+router.get('/chat/scissors', (req, res) => {
     res.render('scissorschat', {});
 });
 
