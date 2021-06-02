@@ -1,0 +1,45 @@
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-7 justify-content-center">
+                <div class="card card-bordered">
+                    <div class="card-header">
+                        <h4 class="card-title"><strong> {{Room}} Chat</strong></h4> <a class="btn btn-xs btn-secondary" href="#">Change Rooms</a>
+                    </div>
+                    <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+                        <div class="media media-chat">
+                            <div class="media-body">
+                                <p class="recieved-message">This is what it looks like to get a message!</p>
+                            </div>
+                        </div>
+                        <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p class="sent-message">And this is what it looks like to send one!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                        </div>
+                    </div>
+                    <div class="input-group align-bottom" id="input-form">
+                            <textarea class="form-control" aria-label="With textarea" id="message-input"></textarea>
+                            <span class="btn input-group-text" id="send-message">Send</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 justify-content-center">
+                    <div class="card card-bordered">
+                        <div class="d-grid gap-2 mx-auto">
+                            <button name="room" class="btn btn-primary">Rock</button>
+                            <button name="room" class="btn btn-dark">Scissors</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/socket.js"></script>
