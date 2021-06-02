@@ -18,6 +18,10 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+.pdg-rght {
+    padding-right: 35px;
+}
+
 .card-bordered {
     border: 1px solid #ebebeb
 }
