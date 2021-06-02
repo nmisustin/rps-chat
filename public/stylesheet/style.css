@@ -3,6 +3,8 @@ body {
     background: -moz-linear-gradient(45deg, #967AA1 0%, #49B6FF 100%);
     background: -webkit-linear-gradient(45deg, #967AA1 0%, #49B6FF 100%);
     background: linear-gradient(45deg, #967AA1 0%, #49B6FF 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
 };
 
 .card-bordered {
