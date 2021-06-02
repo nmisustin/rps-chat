@@ -7,11 +7,11 @@ router.get('/', (req, res) => {
     res.render('homepage', {});
 });
 
-router.get('/chat/rock', withAuth, (req, res) => {
+router.get('/chat/rock',withAuth, (req, res) => {
     res.render('rockchat', {});
 });
 
-router.get('/chat/paper', withAuth, (req, res) => {
+router.get('/chat/paper',withAuth, (req, res) => {
     res.render('paperchat', {});
 });
 
