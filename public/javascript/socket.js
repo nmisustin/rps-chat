@@ -7,14 +7,23 @@ const socket = io();
 
 
 
-function getRoomValue() {
-    var rm = document.getElementsByName('room');
+function loginRoomValue() {
+    var rm = document.getElementsByName('login-room');
 
     for(i = 0; i < rm.length; i++) {
         if(rm[i].checked){
-            // 
-            // socket code here
-            // 
+            const room = rm[i];
+            console.log(room);
+        }
+    }
+}
+function signUpRoomValue(){
+    var rm = document.getElementsByName('signup-room');
+
+    for(i = 0; i < rm.length; i++) {
+        if(rm[i].checked){
+            const room = rm[i];
+            console.log(room);
         }
     }
 }
@@ -61,4 +70,4 @@ function recievedOutput(message){
     messageWrapper.appendChild(div)
 }
 
-sendBtn.addEventListener('click', getInput)
+sendBtn.addEventListener('click', getInput);
