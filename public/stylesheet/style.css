@@ -40,6 +40,10 @@ body {
     padding: 4rem !important
 }
 
+.padding2 {
+    padding: 1rem;
+}
+
 body {
     background-color: #f9f9fa
 }

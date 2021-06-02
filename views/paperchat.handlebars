@@ -4,7 +4,8 @@
             <div class="col-md-7 justify-content-center">
                 <div class="card card-bordered">
                     <div class="card-header">
-                        <h4 class="card-title"><strong> {{Room}} Chat</strong></h4> <a class="btn btn-xs btn-secondary" href="#">Change Rooms</a>
+                        <h4 class="card-title"><strong>Paper</strong></h4> 
+                        {{!-- <a class="btn btn-xs btn-secondary" href="#">Change Rooms</a> --}}
                     </div>
                     <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
                         <div class="media media-chat">
@@ -32,10 +33,11 @@
                 </div>
             </div>
             <div class="col-md-5 justify-content-center">
-                    <div class="card card-bordered">
+                    <div class="card card-bordered text-center padding2">
+                        <label for="login" class="form-label">Switch Rooms?</label>
                         <div class="d-grid gap-2 mx-auto">
-                            <button name="room" class="btn btn-primary">Rock</button>
-                            <button name="room" class="btn btn-dark">Scissors</button>
+                            <a name="room" class="btn btn-primary" href="/rockchat">Rock</a>
+                            <a name="room" class="btn btn-dark" href="/scissorschat">Scissors</a>
                         </div>
                     </div>
                 </div>
