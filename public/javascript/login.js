@@ -25,30 +25,31 @@ async function signupFormHandler(room) {
 }
 
 async function loginFormHandler(room) {
-    const roomName = room
+  const roomName = room
   
-    const username = document.querySelector('#login-username').value.trim();
-    const password = document.querySelector('#login-password').value.trim();
-    console.log(username, password)
-    if (username && password) {
-      console.log('you have entered here')
-      const response = await fetch('/api/users/login', {
-        method: 'post',
-        body: JSON.stringify({
-          username,
-          password
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      });
+  const username = document.querySelector('#login-username').value.trim();
+  const password = document.querySelector('#login-password').value.trim();
+  console.log(username, password)
+  if (username && password) {
+    console.log('you have entered here')
+    const response = await fetch('/api/users/login', {
+      method: 'post',
+      body: JSON.stringify({
+        username,
+        password
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
   
-      if (response.ok) {
-        console.log('success')
-        document.location.replace('/chat/'+roomName);
-      } else {
-        alert(response.statusText);
-      }
+    if (response.ok) {
+      console.log('success')
+      document.location.replace('/chat/'+roomName);
+    } 
+    else {
+      alert(response.statusText);
     }
   }
+}
   
 document.querySelector('#login-rock').addEventListener('click', () => {
   loginFormHandler('rock');
