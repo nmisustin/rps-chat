@@ -3,32 +3,10 @@ const messageInput = document.getElementById('message-input');
 const messageWrapper = document.getElementById('chat-content');
 
 const socket = io();
-
-
-
-
-function loginRoomValue() {
-    var rm = document.getElementsByName('login-room');
-
-    for(i = 0; i < rm.length; i++) {
-        if(rm[i].checked){
-            const room = rm[i];
-            console.log(room);
-        }
-    }
-}
-function signUpRoomValue(){
-    var rm = document.getElementsByName('signup-room');
-
-    for(i = 0; i < rm.length; i++) {
-        if(rm[i].checked){
-            const room = rm[i];
-            console.log(room);
-        }
-    }
-}
-
-
+const room = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+];
+socket.emit('create', room);
 
 
 function getInput(event){

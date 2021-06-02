@@ -22,14 +22,14 @@ app.use(routes);
 
 io.on('connection', socket => {
     console.log('new connection')
-
-    socket.emit('message', 'You are now connected')
-    socket.emit('recievedMessage', 'testing')
-
-    socket.on('userMessage', msg => {
-        console.log(msg);
-        socket.broadcast.emit('recievedMessage', msg);
+    socket.on('create', room => {
+        socket.join(room);
+        socket.on('userMessage', msg => {
+            console.log(msg);
+            socket.broadcast.to(room).emit('recievedMessage', msg);
+        })
     })
+    socket.emit('message', 'You are now connected')
 })
 
 sequelize.sync({ force: false }).then(() => {
