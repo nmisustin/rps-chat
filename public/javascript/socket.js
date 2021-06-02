@@ -4,6 +4,24 @@ const messageWrapper = document.getElementById('chat-content');
 
 const socket = io();
 
+
+
+
+function getRoomValue() {
+    var rm = document.getElementsByName('room');
+
+    for(i = 0; i < rm.length; i++) {
+        if(rm[i].checked){
+            // 
+            // socket code here
+            // 
+        }
+    }
+}
+
+
+
+
 function getInput(event){
     event.preventDefault();
 
