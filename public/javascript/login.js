@@ -63,23 +63,29 @@ async function logout(){
   }
 }
   
-document.querySelector('#login-rock').addEventListener('click', () => {
+document.querySelector('#login-rock').addEventListener('click', (e) => {
+  e.preventDefault();
   loginFormHandler('rock');
 });
-document.querySelector('#login-paper').addEventListener('click', () => {
+document.querySelector('#login-paper').addEventListener('click', (e) => {
+  e.preventDefault();
   loginFormHandler('paper');
 });
-document.querySelector('#login-scissors').addEventListener('click', () => {
+document.querySelector('#login-scissors').addEventListener('click', (e) => {
+  e.preventDefault();
   loginFormHandler('scissors');
 });
 
-document.querySelector('#signup-rock').addEventListener('click', () => {
+document.querySelector('#signup-rock').addEventListener('click', (e) => {
+  e.preventDefault();
   signupFormHandler('rock');
 });
-document.querySelector('#signup-paper').addEventListener('click', () => {
+document.querySelector('#signup-paper').addEventListener('click', (e) => {
+  e.preventDefault();
   signupFormHandler('paper');
 });
-document.querySelector('#signup-scissors').addEventListener('click', () => {
+document.querySelector('#signup-scissors').addEventListener('click', (e) => {
+  e.preventDefault();
   signupFormHandler('scissors');
 });
 document.querySelector('#logout').addEventListener('click', logout);
