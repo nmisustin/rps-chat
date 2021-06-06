@@ -33,32 +33,33 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(routes);
 
-const users = [];
+const rooms = {
+    rock: [],
+    paper: [],
+    scissors: [],
+}
 io.on('connection', socket => {
     socket.emit('connection', 'new connection');
     socket.on('create', room => {
         socket.join(room);
+        io.in(room).emit('ready', `a user has joined ${room}`)
         socket.on('username', username => {
             console.log(username);
-            console.log(users);
-            if(users.indexOf(username)=== -1){
+            console.log(rooms[room]);
+            if(rooms[room].indexOf(username) === -1){
                 console.log('entered')
-                users.push(username);
+                rooms[room].push(username);
             }
-            else{
-                console.log('did not enter')
-            }
-            console.log(users);
-            socket.to(room).emit('users', users);
+            io.in(room).emit('users', rooms[room]);
         })
         socket.on('userMessage', msg => {
             console.log(msg);
             socket.broadcast.to(room).emit('recievedMessage', msg);
         })
         socket.on('disconnect', user => {
-            users.splice(users.indexOf(user), 1);
-            console.log(users);
-            socket.to(room).emit('users', users);
+            rooms[room].splice(rooms[room].indexOf(user), 1);
+            console.log(rooms[room]);
+            io.in(room).emit('users', rooms[room]);
         })
     })
     socket.emit('message', 'You are now connected')

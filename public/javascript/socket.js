@@ -8,7 +8,7 @@ const room = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
 ];
 socket.emit('create', room);
-socket.on('connection', message =>{
+socket.on('ready', message =>{
     console.log(message);
     const username = window.sessionStorage.getItem('username');
     socket.emit('username', username);
@@ -68,5 +68,11 @@ function recievedOutput(message){
     div.appendChild(div2)
     messageWrapper.appendChild(div)
 }
+messageInput.addEventListener("keyup", event => {
+    if (event.keyCode === 13){
+        event.preventDefault();
+        sendBtn.click();
+    }
+})
 
 sendBtn.addEventListener('click', getInput);
