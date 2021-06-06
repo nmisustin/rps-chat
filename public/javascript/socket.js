@@ -1,7 +1,11 @@
 const sendBtn = document.getElementById('send-message');
 const messageInput = document.getElementById('message-input');
 const messageWrapper = document.getElementById('chat-content');
+const gameWrapper = document.getElementById('game-text')
+const weaponButtons = document.getElementById('weapon-buttons')
 const userList = document.getElementById('usernames')
+
+let users = [];
 
 const socket = io();
 const room = window.location.toString().split('/')[
@@ -14,16 +18,19 @@ socket.on('ready', message =>{
     socket.emit('username', username);
 })
 
-socket.on('users', users => {
-    console.log(users);
-    creatUserList(users);
+socket.on('users', userObjects => {
+    console.log(userObjects);
+    creatUserList(userObjects);
 })
-function creatUserList(users){
+function creatUserList(userObjects){
     userList.innerHTML = '';
+    users = userObjects
+    console.log(users);
     for (let i =0; i< users.length; i++){
         const user = users[i];
         const button = document.createElement('button');
         button.setAttribute('class', 'btn');
+        button.setAttribute('value', user);
         button.innerHTML=user;
         userList.appendChild(button);
     }
@@ -68,6 +75,44 @@ function recievedOutput(message){
     div.appendChild(div2)
     messageWrapper.appendChild(div)
 }
+function getGameUsers(event){
+    const player_1 = event.target.value;
+    const player_2 = window.sessionStorage.getItem('username');
+    socket.emit('startGame', {'player_1': player_1, 'player_2':player_2});
+}
+function gameDialogue(msg){
+    const div = document.createElement('div');
+    div.setAttribute("class", "media media-chat media-chat")
+    const div2 = document.createElement('div');
+    div2.setAttribute("class", "media-body")
+    const output = document.createElement('p');
+    output.setAttribute("class", "recieved-message");
+    output.innerHTML= msg;
+    div2.appendChild(output);
+    div.appendChild(div2)
+    gameWrapper.appendChild(div)
+}
+socket.on('challenge', msg => {
+    gameDialogue(msg);
+})
+function getAttacks(event){
+    const weapon = event.target.value;
+    socket.emit('fight', {'weapon': weapon, 'user': window.sessionStorage.getItem('username')});
+}
+function renderGameResults(message){
+    console.log(message);
+    const div = document.createElement('div');
+    div.setAttribute("class", "media media-chat media-chat")
+    const div2 = document.createElement('div');
+    div2.setAttribute("class", "media-body")
+    const output = document.createElement('p');
+    output.setAttribute("class", "game-result");
+    output.innerHTML= message;
+    div2.appendChild(output);
+    div.appendChild(div2)
+    messageWrapper.appendChild(div)
+}
+socket.on('gameResult', msg => renderGameResults(msg));
 messageInput.addEventListener("keyup", event => {
     if (event.keyCode === 13){
         event.preventDefault();
@@ -76,3 +121,5 @@ messageInput.addEventListener("keyup", event => {
 })
 
 sendBtn.addEventListener('click', getInput);
+userList.addEventListener('click', getGameUsers);
+weaponButtons.addEventListener('click', getAttacks)
