@@ -21,7 +21,8 @@ async function signupFormHandler(room) {
         } else {
             alert(response.statusText);
         }
-    }
+        window.sessionStorage.setItem('username', username);
+    } 
 }
 
 async function loginFormHandler(room) {

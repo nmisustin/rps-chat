@@ -33,19 +33,32 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(routes);
 
+const users = [];
 io.on('connection', socket => {
     socket.emit('connection', 'new connection');
     socket.on('create', room => {
         socket.join(room);
-        const users = [];
         socket.on('username', username => {
             console.log(username);
-            users.push(username);
-            socket.emit('users', users);
+            console.log(users);
+            if(users.indexOf(username)=== -1){
+                console.log('entered')
+                users.push(username);
+            }
+            else{
+                console.log('did not enter')
+            }
+            console.log(users);
+            socket.to(room).emit('users', users);
         })
         socket.on('userMessage', msg => {
             console.log(msg);
             socket.broadcast.to(room).emit('recievedMessage', msg);
+        })
+        socket.on('disconnect', user => {
+            users.splice(users.indexOf(user), 1);
+            console.log(users);
+            socket.to(room).emit('users', users);
         })
     })
     socket.emit('message', 'You are now connected')
