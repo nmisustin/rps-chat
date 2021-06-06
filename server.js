@@ -39,11 +39,13 @@ const rooms = {
     scissors: [],
 }
 io.on('connection', socket => {
+    let user = '';
     socket.emit('connection', 'new connection');
     socket.on('create', room => {
         socket.join(room);
         io.in(room).emit('ready', `a user has joined ${room}`)
         socket.on('username', username => {
+            user = username
             console.log(username);
             console.log(rooms[room]);
             if(rooms[room].indexOf(username) === -1){
@@ -51,18 +53,19 @@ io.on('connection', socket => {
                 rooms[room].push(username);
             }
             io.in(room).emit('users', rooms[room]);
+            console.log('connecting',rooms)
         })
         socket.on('userMessage', msg => {
             console.log(msg);
             socket.broadcast.to(room).emit('recievedMessage', msg);
         })
-        socket.on('disconnect', user => {
+        socket.on('disconnect', () => {
             rooms[room].splice(rooms[room].indexOf(user), 1);
             console.log(rooms[room]);
             io.in(room).emit('users', rooms[room]);
+            console.log('disconnecting', user, ' ' ,rooms);
         })
     })
-    socket.emit('message', 'You are now connected')
 })
 
 sequelize.sync({ force: false }).then(() => {
