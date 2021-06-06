@@ -42,12 +42,13 @@ async function loginFormHandler(room) {
     });
   
     if (response.ok) {
-      console.log('success')
+      console.log('success');
       document.location.replace('/chat/'+roomName);
     } 
     else {
       alert(response.statusText);
     }
+    window.sessionStorage.setItem('username', username);
   }
 }
 async function logout(){

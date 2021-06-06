@@ -34,9 +34,15 @@ app.use(express.urlencoded({extended: true}));
 app.use(routes);
 
 io.on('connection', socket => {
-    console.log('new connection')
+    socket.emit('connection', 'new connection');
     socket.on('create', room => {
         socket.join(room);
+        const users = [];
+        socket.on('username', username => {
+            console.log(username);
+            users.push(username);
+            socket.emit('users', users);
+        })
         socket.on('userMessage', msg => {
             console.log(msg);
             socket.broadcast.to(room).emit('recievedMessage', msg);

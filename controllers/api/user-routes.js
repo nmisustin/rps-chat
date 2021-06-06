@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Post } = require('../../../just-tech-new/models');
 const User = require('../../models/User');
 
 router.get('/', (req, res) => {
@@ -75,6 +76,7 @@ router.post('/login', (req, res) => {
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
             res.json({ user: dbUserData, message: 'You are now logged in! '});
+            console.log(req.session);
         })
 
 
@@ -129,6 +131,23 @@ router.post('/logout', (req, res) => {
     else{
         res.status(404).end();
     }
+})
+router.get('/username', (req, res) => {
+    Post.findOne(
+        {
+            where:{
+                id: req.session.user_id
+            }
+        }
+    )
+    .then(userData => {
+        console.log(req.session)
+        res.json(userData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
 })
 
 module.exports = router;
