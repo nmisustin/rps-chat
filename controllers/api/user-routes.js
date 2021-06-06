@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { Post } = require('../../../just-tech-new/models');
 const User = require('../../models/User');
 
 router.get('/', (req, res) => {
