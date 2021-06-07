@@ -112,7 +112,13 @@ function renderGameResults(message){
     div.appendChild(div2)
     messageWrapper.appendChild(div)
 }
-socket.on('gameResult', msg => renderGameResults(msg));
+socket.on('gameResult', msg => {
+    renderGameResults(msg);
+});
+socket.on('result', msg => {
+    gameWrapper.innerHTML = '';
+    gameDialogue(msg)
+});
 messageInput.addEventListener("keyup", event => {
     if (event.keyCode === 13){
         event.preventDefault();
